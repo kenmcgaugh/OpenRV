@@ -436,6 +436,7 @@ def configure() -> None:
             f"--prefix={OUTPUT_DIR}",
             f"--exec-prefix={OUTPUT_DIR}",
             "--enable-shared",
+            "--enable-loadable-sqlite-extensions",
         ]
 
         if OPENSSL_OUTPUT_DIR:

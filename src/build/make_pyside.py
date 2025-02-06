@@ -92,7 +92,12 @@ def prepare() -> None:
         clang_version_str = ".".join(clang_version_search.groups())
         clang_filename_suffix = clang_version_str + "-based-macos-universal.7z"
     elif system == "Linux":
-        clang_filename_suffix = "80-based-linux-Rhel7.2-gcc5.3-x86_64.7z"
+        id_like = platform.freedesktop_os_release()
+        if 'rhel' in id_like or 'fedora' in id_like or 'centos' in id_like:
+            clang_filename_suffix = "80-based-linux-Rhel7.2-gcc5.3-x86_64.7z"
+        else:
+            # assume ubuntu
+            clang_filename_suffix = "80-based-linux-Ubuntu16.04-gcc5.3-x86_64.7z"
     elif system == "Windows":
         clang_filename_suffix = "140-based-windows-vs2019_64.7z"
 
