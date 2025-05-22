@@ -52,7 +52,7 @@ EXTERNALPROJECT_ADD(
   URL_MD5 ${_download_hash}
   DOWNLOAD_NAME ${_target}_${_version}.zip
   DOWNLOAD_DIR ${RV_DEPS_DOWNLOAD_DIR}
-  CONFIGURE_COMMAND cd auto && ${_make_command} && cd .. && ${_make_command}
+  CONFIGURE_COMMAND cd auto && ${_make_command} "CC=${CMAKE_C_COMPILER}" "CFLAGS.EXTRA=${CMAKE_C_FLAGS}" && cd .. && ${_make_command} "CC=${CMAKE_C_COMPILER}" "CFLAGS.EXTRA=${CMAKE_C_FLAGS}"
   BUILD_COMMAND ${_make_command} -j${_cpu_count} GLEW_DEST=${_install_dir}
   INSTALL_COMMAND ${_make_command} install LIBDIR=${_lib_dir} GLEW_DEST=${_install_dir}
   BUILD_IN_SOURCE TRUE
